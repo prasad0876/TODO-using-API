@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Delete Task</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fff5f5;
+      padding: 50px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      animation: fadeIn 1s ease forwards;
+      color: #333;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    h1 {
+      color: #d9534f;
+      font-weight: 700;
+      margin-bottom: 15px;
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      text-align: center;
+      max-width: 400px;
+      animation: fadeIn 1.4s ease forwards;
+    }
+
+    form {
+      margin-bottom: 20px;
+      animation: fadeIn 1.6s ease forwards;
+    }
+
+    button {
+      background-color: #d9534f;
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background-color: #c9302c;
+      transform: scale(1.05);
+    }
+
+    a {
+      color: #0275d8;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s;
+      animation: fadeIn 1.8s ease forwards;
+    }
+
+    a:hover {
+      color: #014c8c;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Delete Task</h1>
+  <p>Are you sure you want to delete "<strong>{{ task.title }}</strong>"?</p>
+
+  <form method="POST">
+    {% csrf_token %}
+    <button type="submit">Yes, Delete</button>
+  </form>
+
+  <a href="{% url 'tasks:task_list' %}">Cancel</a>
+
+</body>
+</html>

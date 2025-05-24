@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Task</title>
+  <style>
+    /* Basic reset & font */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #ffffff);
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    h1 {
+      color: #007bff;
+      text-align: center;
+      margin-bottom: 25px;
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    form {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 12px 25px rgba(0, 123, 255, 0.15);
+      width: 100%;
+      max-width: 450px;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    label {
+      font-weight: 600;
+      color: #333;
+      display: block;
+      margin-top: 20px;
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      border: 1.8px solid #ccc;
+      border-radius: 8px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      resize: vertical;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+      outline: none;
+    }
+
+    button {
+      margin-top: 30px;
+      width: 100%;
+      background: linear-gradient(90deg, #007bff, #0056b3);
+      color: white;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border: none;
+      padding: 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #004080;
+      transform: scale(1.05);
+    }
+
+    a {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+      color: #007bff;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #004080;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Create Task</h1>
+  <form method="POST">
+    {% csrf_token %}
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" rows="4"></textarea>
+
+    <button type="submit">Create</button>
+  </form>
+
+  <a href="{% url 'tasks:task_list' %}">Back to list</a>
+
+</body>
+</html>
